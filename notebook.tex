@@ -1,0 +1,89 @@
+\documentclass[8pt,a4paper,landscape,oneside]{amsart}
+\usepackage{amsmath, amsthm, amssymb, amsfonts}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+
+%\usepackage{booktabs}
+%\usepackage{caption}
+%\usepackage{color}
+%\usepackage{float}
+\usepackage{fullpage}
+%\usepackage{subcaption}
+%\usepackage[scaled]{beramono}
+\usepackage{titling}
+%\usepackage{datetime}
+%\usepackage{enumitem}
+%\usepackage{bm}
+
+% Minted
+\usepackage{minted}
+\newcommand{\code}[1]{\inputminted[fontsize=\normalsize,baselinestretch=1]{java}{code/#1}}
+
+\newcommand{\bigO}{\mathcal{O}}
+
+\pagestyle{fancy}
+\lhead{Flip the tables - Lund University}
+\rhead{\thepage}
+\cfoot{}
+\setlength{\headheight}{15.2pt}
+\setlength{\droptitle}{-20pt}
+\posttitle{\par\end{center}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\begin{document}
+
+\begin{multicols*}{3}
+%\maketitle
+\thispagestyle{fancy}
+\vspace{-3em}
+
+\tableofcontents
+\section{Code Templates}
+    \subsection{Fast IO Java}
+        Kattio with easier names
+%        \code{fastio.java}
+
+\section{Graph Algorithms}
+    \subsection{Dijsktra's Algorithm - $\bigO(|E| \log{|V|})$}
+        \code{graphs/Dijkstras.java}
+\section{Acieving AC on a solved problem}
+    \subsection{WA}
+        \begin{itemize}
+        \item Check that minimal input passes.
+        \item Can an int overflow?
+        \item Reread the problem statement.
+        \item Start creating small testcases with python.
+        \item Does cout print with high enough precision?
+        \item Abstract the implementation.
+        \end{itemize}
+    \subsection{TLE}
+        \begin{itemize}
+        \item Is the solution sanity checked?
+        \item Use pypy instead of python.
+        \item Rewrite in C++ or Java.
+        \item Can we apply DP anywhere?
+        \item To minimize penalty time you should create a worst case input (if easy) to test on.
+        \end{itemize}
+    \subsection{RTE}
+        \begin{itemize}
+        \item Recursion limit in python?
+        \item Arrayindex out of bounds?
+        \item Division by $0$?
+        \item Modifying iterator while iterating over it?
+        \item Not using a well definied operator for Collections.sort?
+        \item If nothing makes sense and the end of the contest is approaching you 
+            can binary search over where the error is with try-except.
+        \end{itemize}
+    \subsection{MLE}
+        \begin{itemize}
+        \item Create objects outside recursive function.
+        \item Rewrite recursive solution to itterative with an own stack.
+        \end{itemize}
+
+
+
+\end{multicols*}
+\end{document}

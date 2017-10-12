@@ -46,17 +46,28 @@
   \code{Kattio.java}
   
 \section{Data Structures}
-  \subsection{Binary Search - $\bigO(n \log(n))$}
+  \subsection{Binary Search}
+  Time complexity is $\bigO(n \log(n))$ and space complexity is $\bigO(1)$.
   \code{Structures/BinarySearch.java}
-  \subsection{Sorting - $\bigO(n \log(n))$}
+  \subsection{Sorting}
+  Time complexity is $\bigO(n \log(n))$ for both algorithms and space complexity is $\bigO(\log(n))$.
   \begin{itemize}
   \item \texttt{Collections.sort()} uses Merge Sort
   \item \texttt{Arrays.sort()} uses Quick Sort
   \end{itemize}
   
+  \subsection{Fenwick tree}
+  Time complexity is $\bigO(\log(n))$ for all operations and space complexity is $\bigO(1)$.
+  \code{Structures/Fenwick.java}
+  
 \section{Graph Algorithms}
-    \subsection{Dijsktra's Algorithm - $\bigO(|E| \log{|V|})$}
-        \code{Graphs/Dijkstras.java}
+  \subsection{Dijsktra's Algorithm}
+  Time complexity is $\bigO(|E| \log{|V|})$ and space complexity is $\bigO(|V|)$.
+  \code{Graphs/Dijkstras.java}
+  \subsection{Prim's Algorithm}
+  Time complexity is $\bigO(|E| \log{|V|})$ and space complexity is $\bigO(|V|)$. If you want to have the resulting tree, add a parent node and a list of child nodes to all nodes. Set the parent when you update the cost of another node, and add yourself to your parent's list of children when you are popped.
+  \code{Graphs/MST.java}
+        
 \section{Acieving AC on a solved problem}
     \subsection{WA}
         \begin{itemize}

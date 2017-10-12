@@ -1,7 +1,7 @@
 public class Dijkstra {
   public class Node implements Comparable<Node> {
     int index;
-    List<Road> roads = new ArrayList<>();
+    List<Edge> edges = new ArrayList<>();
     long cost = Long.MAX_VALUE;
     
     public Node(int index) {
@@ -15,11 +15,11 @@ public class Dijkstra {
     }
   }
   
-  public class Road {
+  public class Edge {
     Node start, end;
     long cost;
     
-    public Road(Node start, Node end, long cost) {
+    public Edge(Node start, Node end, long cost) {
       this.start = start;
       this.end = end;
       this.cost = cost;
@@ -35,10 +35,10 @@ public class Dijkstra {
       if (node == t)
         return node.cost;
       
-      for (Road road : node.roads) {
-        Node other = road.end;
-        other = (other == node) ? road.start : other;
-        long cost = node.cost + road.cost;
+      for (Edge edge : node.edges) {
+        Node other = edge.end;
+        other = (other == node) ? edge.start : other;
+        long cost = node.cost + edge.cost;
         if (cost < other.cost) {
           queue.remove(other);
           other.cost = cost;

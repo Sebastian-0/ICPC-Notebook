@@ -70,6 +70,9 @@
   \subsection{Prim's Algorithm}
   Time complexity is $\bigO(|E| \log{|V|})$ and space complexity is $\bigO(|V|)$. If you want to have the resulting tree, add a parent node and a list of child nodes to all nodes. Set the parent when you update the cost of another node, and add yourself to your parent's list of children when you are popped.
   \code{Graphs/MST.java}
+  \subsection{Topological Sort}
+  Time complexity is $\bigO(|E| + |V|)$ and space complexity is $\bigO(|V|)$. You need to pop the resulting stack to get the nodes in the correct order, \textit{do not} loop over it/convert to list since that results in the reverse order.
+  \code{Graphs/Dijkstras.java}
         
 \section{Acieving AC on a solved problem}
     \subsection{WA}

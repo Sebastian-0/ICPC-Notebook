@@ -9,8 +9,8 @@ public class MinimumSpanningTree {
       node.taken = true;
       result += node.cost;
       for (Edge edge : node.edges) {
-        Node other = edge.end;
-        other = (other == node) ? edge.start : other;
+        Node other = edge.end == node ?
+          edge.start : edge.end;
         if (edge.cost < other.cost && !other.taken) {
           queue.remove(other);
           other.cost = edge.cost;

@@ -9,8 +9,8 @@ public class Dijkstra {
         return node.cost;
       
       for (Edge edge : node.edges) {
-        Node other = edge.end;
-        other = (other == node) ? edge.start : other;
+        Node other = edge.end == node ?
+          edge.start : edge.end;
         long cost = node.cost + edge.cost;
         if (cost < other.cost) {
           queue.remove(other);

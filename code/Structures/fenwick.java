@@ -3,8 +3,7 @@ private static class BIT {
   public BIT(int size) {
     tree = new long[size+1];
   }
-  long sum(int index)
-  {
+  long sum(int index) {
     long sum = 0;
     index++;
     while (index > 0) {

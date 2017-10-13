@@ -1,5 +1,6 @@
 Simple instructions per second ~ 100 000 000
-n per sekund =
+n per second =
+O(log(n))     - 2 ^ 100 000 000 :D
 O(n)          - 100 000 000
 O(n*log(n))   - 4 500 000
 O(n^2)        - 10 000

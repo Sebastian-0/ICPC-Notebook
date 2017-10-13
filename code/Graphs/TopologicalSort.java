@@ -8,13 +8,13 @@ public class TopologicalSort {
     return result;
   }
   
-  private void doSolve(Stack<Node> result, Node node) {
+  private void doSolve(Stack<Node> stack, Node node) {
     node.taken = true;
     for (Edge edge : node.edges) {
       Node other = edge.end;
       if (!other.taken)
-        doSolve(result, other);
+        doSolve(stack, other);
     }
-    result.push(node);
+    stack.push(node);
   }
 }

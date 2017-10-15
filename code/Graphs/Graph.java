@@ -5,8 +5,8 @@ public class Graph {
     long cost = Long.MAX_VALUE;
     boolean taken;
 
-    public Node(int index) {
-      this.index = index;
+    public Node(int idx) {
+      index = idx;
     }
 
     public int compareTo(Node o) {
@@ -17,13 +17,15 @@ public class Graph {
   }
 
   public class Edge {
+    int index;
     Node start, end;
     long cost;
 
-    public Edge(Node start, Node end, long cost) {
-      this.start = start;
-      this.end = end;
-      this.cost = cost;
+    public Edge(int idx, Node s, Node e, long c) {
+      index = idx;
+      start = s;
+      end = e;
+      cost = c;
     }
   }
 }

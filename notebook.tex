@@ -45,6 +45,7 @@
   \subsection{KattIO}
   \code{Kattio.java}
   
+  
 \section{Data Structures}
   \subsection{Binary Search}
   Time complexity is $\bigO(n \log(n))$ and space complexity is $\bigO(1)$.
@@ -57,12 +58,17 @@
   \end{itemize}
   
   \subsection{Quick Select}
-  Time complexity is $\bigO(n)$ and space complexity is $\bigO(\log(n))$.
+  Time complexity is $\bigO(n)$ on average and $\bigO(n^2)$ in the worst case. The space complexity is $\bigO(\log(n))$.
   \code{Structures/QuickSelect.java}
+  
+  \subsection{Knuth-Morris-Pratt Algorithm}
+  Time complexity is $\bigO(n)$ and space complexity is $\bigO(\log(n))$.
+  \code{Structures/KMP.java}
   
   \subsection{Fenwick tree}
   Time complexity is $\bigO(\log(n))$ for all operations and space complexity is $\bigO(1)$.
   \code{Structures/Fenwick.java}
+  
   
 \section{Graph Algorithms}
   \subsection{Graph definition}
@@ -71,18 +77,27 @@
   \subsection{Dijsktra's Algorithm}
   Time complexity is $\bigO(|E| \log{|V|})$ and space complexity is $\bigO(|V|)$.
   \code{Graphs/Dijkstras.java}
+  
   \subsection{Bellman-Ford Algorithm}
   Time complexity is $\bigO(|E||V|)$ and space complexity is $\bigO(|V|)$.
   \code{Graphs/BellmanFord.java}
+  
   \subsection{Floyd-Warshall Algorithm}
   Time complexity is $\bigO(|V|^3)$ and space complexity is $\bigO(|V|^2)$.
   \code{Graphs/FloydWarshall.java}
+  
   \subsection{Prim's Algorithm}
   Time complexity is $\bigO(|E| \log{|V|})$ and space complexity is $\bigO(|V|)$. If you want to have the resulting tree, add a parent node and a list of child nodes to all nodes. Set the parent when you update the cost of another node, and add yourself to your parent's list of children when you are popped.
   \code{Graphs/MST.java}
+  
   \subsection{Topological Sort}
   Time complexity is $\bigO(|E| + |V|)$ and space complexity is $\bigO(|V|)$. You need to pop the resulting stack to get the nodes in the correct order, \textit{do not} loop over it/convert to list since that results in the reverse order.
   \code{Graphs/TopologicalSort.java}
+  
+  \subsection{Network Flow/Min Cut}
+  Time complexity is $\bigO(|V||E|^2)$ and space complexity is $\bigO(|V|+|E|)$. Solves both max flow and min cut. If the graph is very large this can be improved to $\bigO(|E|^2 \log{C})$ (where C is the maximum flow). Find $\Delta$, the largest POT that is smaller than the largest flow out of $s$. Run the algorithm but only allow edges with a capacity of at least $\Delta$. When there are no more paths between $s$ and $t$ let $\Delta = \Delta / 2$ and repeat until $\Delta < 0$.
+  \code{Graphs/NetworkFlow.java}
+        
         
 \section{Acieving AC on a solved problem}
     \subsection{WA}

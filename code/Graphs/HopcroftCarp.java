@@ -15,6 +15,7 @@ public class HopcroftCarp {
     G[NIL] = new Node(0);
   }
   
+  // Returns the minimum vertex cover
   public Set<Node> solveMinVTC() {
     Map<Node, Node> Lm = solveMatching();
     Map<Node, Node> Rm = Lm.entrySet().stream().
@@ -59,6 +60,7 @@ public class HopcroftCarp {
     return K;
   }
   
+  // Returns the maximum bipartite matching
   public Map<Node, Node> solveMatching() {
     int[] pairs = new int[L.length + R.length + 1];
     int[] distance = new int[L.length + R.length + 1];

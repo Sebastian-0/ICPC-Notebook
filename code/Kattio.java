@@ -12,13 +12,13 @@ class Kattio {
     return peekToken() != null;
   }
   public int getInt() {
-    return Integer.parseInt(nextToken());
+    return Integer.parseInt(getWord());
   }
   public double getDouble() {
-    return Double.parseDouble(nextToken());
+    return Double.parseDouble(getWord());
   }
   public long getLong() {
-    return Long.parseLong(nextToken());
+    return Long.parseLong(getWord());
   }
   public String getWord() {
     String ans = peekToken();

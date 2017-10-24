@@ -62,8 +62,12 @@
   \code{Structures/QuickSelect.java}
   
   \subsection{Knuth-Morris-Pratt Algorithm}
-  Time complexity is $\bigO(n)$ and space complexity is $\bigO(\log(n))$.
+  Time complexity is $\bigO(n)$ and space complexity is $\bigO(\log(n))$. Good when the alphabet is small (around 4-5 characters).
   \code{Structures/KMP.java}
+  
+  \subsection{Z-Array Algorithm}
+  Time complexity is $\bigO(n)$ and space complexity is $\bigO(n)$. Good when the alphabet is large.
+  \code{Structures/ZArray.java}
   
   \subsection{Fenwick tree}
   Time complexity is $\bigO(\log(n))$ for all operations and space complexity is $\bigO(1)$.
@@ -91,7 +95,7 @@
   \code{Graphs/MST.java}
   
   \subsection{Topological Sort}
-  Time complexity is $\bigO(|E| + |V|)$ and space complexity is $\bigO(|V|)$. You need to pop the resulting stack to get the nodes in the correct order, \textit{do not} loop over it/convert to list since that results in the reverse order.
+  Time complexity is $\bigO(|E| + |V|)$ and space complexity is $\bigO(|V|)$. You need to pop the resulting stack to get the nodes in the correct order, \textit{do not} loop over it/convert to list since that results in the reverse order. Running this on a graph with cycles yields an incorrect result.
   \code{Graphs/TopologicalSort.java}
   
   \subsection{Network Flow/Min Cut}
@@ -103,39 +107,36 @@
   \code{Graphs/HopcroftCarp.java}
         
         
-\section{Acieving AC on a solved problem}
-    \subsection{WA}
-        \begin{itemize}
-        \item Check that minimal input passes.
-        \item Can an int overflow?
-        \item Reread the problem statement.
-        \item Start creating small testcases with python.
-        \item Does cout print with high enough precision?
-        \item Abstract the implementation.
-        \end{itemize}
-    \subsection{TLE}
-        \begin{itemize}
-        \item Is the solution sanity checked?
-        \item Use pypy instead of python.
-        \item Rewrite in C++ or Java.
-        \item Can we apply DP anywhere?
-        \item To minimize penalty time you should create a worst case input (if easy) to test on.
-        \end{itemize}
-    \subsection{RTE}
-        \begin{itemize}
-        \item Recursion limit in python?
-        \item Arrayindex out of bounds?
-        \item Division by $0$?
-        \item Modifying iterator while iterating over it?
-        \item Not using a well definied operator for Collections.sort?
-        \item If nothing makes sense and the end of the contest is approaching you 
-            can binary search over where the error is with try-except.
-        \end{itemize}
-    \subsection{MLE}
-        \begin{itemize}
-        \item Create objects outside recursive function.
-        \item Rewrite recursive solution to itterative with an own stack.
-        \end{itemize}
+\section{Checking for errors}
+  \subsection{Wrong Answer}
+    \begin{itemize}
+    \item Test minimal input
+    \item Integer overflow
+    \item Reread the problem statement
+    \item Look for edge-cases
+    \item Start creating small testcases
+    \end{itemize}
+  \subsection{Time Limit Exceeded}
+    \begin{itemize}
+    \item Is the time complexity checked?
+    \item Is the output efficient?
+    \item If written in python, rewrite in java?
+    \item Can we apply DP anywhere?
+    \item Create worst case input
+    \end{itemize}
+  \subsection{Runtime Error}
+    \begin{itemize}
+    \item Stack overflow?
+    \item Index out of bounds?
+    \item Division by $0$?
+    \item Concurrent modification?
+    \end{itemize}
+  \subsection{Memory Limit Exceeded}
+    \begin{itemize}
+    \item Create objects outside recursive function
+    \item Convert recursive functions to iterative with your own stack
+    \end{itemize}
+        
         
 \section{Running time}
 The following table contains the number of elements that can be processed per second given the algorithm complexity in $n$.

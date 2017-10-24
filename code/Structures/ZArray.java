@@ -6,7 +6,8 @@ private static class ZArray {
     
     for (int i = 1; i < z.length; i++) {
       if (z[i] == pat.length())
-        return i-1-pat.length(); // Return or collect when equal
+        return i-1-pat.length();// Return or collect
+                                // when equal
     }
     return -1;
   }

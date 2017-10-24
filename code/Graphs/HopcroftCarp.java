@@ -32,10 +32,9 @@ public class HopcroftCarp {
     
     while (!queue.isEmpty()) {
       Node u = queue.poll();
-      Node parent = Lm.getOrDefault(u, null);
       for (Edge e : u.edges) {
         Node v = e.end == u ? e.start : e.end;
-        if (!Z[v.index] && v != parent) { // Parent check unnecessary?
+        if (!Z[v.index]) {
           Z[v.index] = true;
           if (Rm.containsKey(v)) {
             Node w = Rm.get(v);
@@ -97,7 +96,8 @@ public class HopcroftCarp {
         for (Edge e : u.edges) {
           Node v = e.end == u ? e.start : e.end;
           if (distance[pair[v.index]] == INF) {
-            distance[pair[v.index]] = distance[u.index] + 1;
+            distance[pair[v.index]] =
+              distance[u.index] + 1;
             queue.offer(G[pair[v.index]]);
           }
         }
@@ -106,12 +106,13 @@ public class HopcroftCarp {
     return distance[NIL] < INF;
   }
   
-  private boolean dfs(Node[] G, int[] pair, int[] distance,
-      Node u) {
+  private boolean dfs(Node[] G, int[] pair,
+      int[] distance, Node u) {
     if (u.index != NIL) {
       for (Edge e : u.edges) {
         Node v = e.end == u ? e.start : e.end;
-        if (distance[pair[v.index]] == distance[u.index] + 1 &&
+        if (distance[pair[v.index]] ==
+            distance[u.index] + 1 &&
             dfs(G, pair, distance, G[pair[v.index]])) {
           pair[v.index] = u.index;
           pair[u.index] = v.index;

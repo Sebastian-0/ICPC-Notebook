@@ -1,24 +1,29 @@
 public class MinimumSpanningTree {
-  public long solve(Node start) {
-    long result = 0;
+  // Returns the edges of the MST
+  public List<Edge> solve(Node[] nodes, Node start) {
+    Edge[] source = new Edge[nodes.length];
     TreeSet<Node> queue = new TreeSet<>();
     start.cost = 0;
     queue.add(start);
     while (!queue.isEmpty()) {
-      Node node = queue.pollFirst();
-      node.taken = true;
-      result += node.cost;
-      for (Edge edge : node.edges) {
-        Node other = edge.end == node ?
-          edge.start : edge.end;
-        if (edge.cost < other.cost && !other.taken) {
-          queue.remove(other);
-          other.cost = edge.cost;
-          queue.add(other);
+      Node u = queue.pollFirst();
+      u.taken = true;
+      for (Edge e : u.edges) {
+        Node v = e.end == u ? e.start : e.end;
+        if (e.cost < v.cost && !v.taken) {
+          queue.remove(v);
+          v.cost = e.cost;
+          source[v.index] = e;
+          queue.add(v);
         }
       }
     }
+    
+    List<Edge> mst = new ArrayList<>();
+    for (Edge e : source) {
+      if (e != null)
+        mst.add(e);
+    }
 
-    return result;
+    return mst;
   }
-}

@@ -34,7 +34,7 @@ class Kattio {
           if (line == null) return null;
           st = new StringTokenizer(line);
         }
-        token = st.getWord();
+        token = st.nextToken();
       } catch (IOException e) { }
     return token;
   }

@@ -80,7 +80,7 @@
   \code{Structures/MinMonoQueue.java}
   
   \subsection{Union-Find}
-  Time complexity is amortized $\bigO(1)$ for all operations and space complexity is $\bigO(1)$.
+  Time complexity is amortized $\bigO(\log^*{n})$ for all operations and space complexity is $\bigO(1)$.
   \code{Structures/UnionFind.java}
   
   
@@ -160,11 +160,12 @@ The following table contains the number of elements that can be processed per se
 \begin{center}
 \begin{tabular}{lr}
 Alg. Complexity & Input size/s \\ \hline
-$\bigO(\log(n))$     & 2 \textasciicircum 100 000 000 \\
+$\bigO(\log^*{n})$   & $\rightarrow \infty$ \\
+$\bigO(\log{n})$     & 2 \textasciicircum 100 000 000 \\
 $\bigO(n)$           & 100 000 000 \\
-$\bigO(n*\log(n))$   & 4 500 000 \\
+$\bigO(n*\log{n})$   & 4 500 000 \\
 $\bigO(n^2)$         & 10 000 \\
-$\bigO(n^2*\log(n))$ & 3 000 \\
+$\bigO(n^2*\log{n})$ & 3 000 \\
 $\bigO(n^3)$         & 450 \\
 $\bigO(2^n)$         & 26.5 \\
 $\bigO(3^n)$         & 16.5 \\

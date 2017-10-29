@@ -1,3 +1,5 @@
+// Used to efficiently build large sets and verify 
+// which set a node belongs to 
 public class UnionFind {
   public Node find(Node n) {
     if (n.parent != n)

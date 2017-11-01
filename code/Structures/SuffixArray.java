@@ -1,3 +1,4 @@
+// Sorts all the suffixes of a string into an array
 public class SuffixArray {
   private String text;
   private Suffix[] suffixes;

@@ -124,7 +124,27 @@
 \section{Geometry}
   \subsection{Graham Scan}
   Time complexity is $\bigO(n\log{n})$ and space complexity is $\bigO(n)$.
-  \code{Geometry/GrahamScan.java}  
+  \code{Geometry/GrahamScan.java}
+  
+\section{Dynamic Programing}
+  \subsection{Knapsack 1/0}
+  In knapsack you pick items each with a value $v_i$ and a weight $w_i$ and you want to maximize the value while limited by a total weight $W$. The following recursion relation solves the problem in $\bigO(nW)$:
+  \[
+  Opt(i,w) = \begin{cases}
+  0 & \text{if } i=0 \\
+  Opt(i-1,W) & \text{if } W<w_i \\
+  \max\lbrace Opt(i-1,W), Opt(i-1,W-w_i) + v_i \rbrace & \text{if } W \geq w_i
+  \end{cases}
+  \]
+  \subsection{Knapsack Unbounded}
+  The same problem as above but with an unlimited amount of each item. The following recursion relation solves the problem in $\bigO(nW)$:
+  \[
+  Opt(i,w) = \begin{cases}
+  0 & \text{if } W=0 \\
+  \max\limits_{w_i \leq W} \lbrace Opt(W-w_i) + v_i \rbrace & \text{otherwise}
+  \end{cases}
+  \]
+  \subsection{Edit distance}
         
         
 \section{Checking for errors}

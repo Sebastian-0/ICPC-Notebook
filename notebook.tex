@@ -133,9 +133,14 @@
   Opt(i,w) = \begin{cases}
   0 & \text{if } i=0 \\
   Opt(i-1,W) & \text{if } W<w_i \\
-  \max\lbrace Opt(i-1,W), Opt(i-1,W-w_i) + v_i \rbrace & \text{if } W \geq w_i
+  \begin{aligned}[t]\arraycolsep=0pt
+    \max\lbrace &
+      Opt(i-1,W), \\ &
+      Opt(i-1,W-w_i) + v_i \rbrace
+  \end{aligned} & \text{if } W \geq w_i
   \end{cases}
   \]
+  
   \subsection{Knapsack Unbounded}
   The same problem as above but with an unlimited amount of each item. The following recursion relation solves the problem in $\bigO(nW)$:
   \[
@@ -144,7 +149,41 @@
   \max\limits_{w_i \leq W} \lbrace Opt(W-w_i) + v_i \rbrace & \text{otherwise}
   \end{cases}
   \]
+  
+  \subsection{Subset Sum}
+  In subset sum you are given a set of values and want to select a subset that sum to $W$. This is solved by knapsack by letting $v_i = w_i$ and checking if $Opt(n, W) = W$.
+  
   \subsection{Edit distance}
+  In edit distance you compute the minimum distance between two strings $a$ and $b$ of length $m$ and $n$. During the transformation you may allow a mismatch or pad with a space, giving the penalties $p_m$ and $p_s$ respectively. The following recursion relation solves the problem in $\bigO(mn)$:
+  \[
+  Opt(i,j) = \begin{cases}
+  j*p_s & \text{if } i=0 \\
+  i*p_s & \text{if } j=0 \\
+  Opt(i-1,j-1) & \text{if } a_i=b_j \\
+  \begin{aligned}[t]\arraycolsep=0pt
+    \min\lbrace &
+      Opt(i-1,j-1) + p_m, \\ &
+      Opt(i-1,j) + p_s, \\ & 
+      Opt(i,j-1) + p_s \rbrace
+  \end{aligned} & \text{if } a_i\neq b_j
+  \end{cases}
+  \]
+  Example: ED("ABC", "ACD") = 2 ("ABC-" vs. "A-CD") where $p_m = p_s = 1$.
+  
+  \subsection{Longest Common Subsequence}
+  Related to edit distance, you want to compute the longest common subsequence of two strings $a$ and $b$ of length $m$ and $n$. The result of the algorithm is the string itself ($\frown$ appends to the result). The following recursion relation solves the problem in $\bigO(mn)$:
+  \[
+  Opt(i,j) = \begin{cases}
+  0 & \text{if } i=0 \text{ or } j=0 \\
+  Opt(i-1,j-1) \frown a_i & \text{if } a_i=b_j \\
+  \begin{aligned}[t]\arraycolsep=0pt
+    \mathrm{longest}\lbrace &
+      Opt(i-1,j), \\ & 
+      Opt(i,j-1) \rbrace
+  \end{aligned} & \text{if } a_i\neq b_j
+  \end{cases}
+  \]
+  Example: LCS("ABCD", "A-B-D-C") = "ABD".
         
         
 \section{Checking for errors}

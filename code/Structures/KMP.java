@@ -1,3 +1,4 @@
+// Finds patterns in a text
 private static class KMP {
   public static int match(String text, String pat) {
     int[] lps = new int[pat.length()];

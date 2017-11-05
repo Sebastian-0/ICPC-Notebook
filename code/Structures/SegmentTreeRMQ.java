@@ -1,3 +1,4 @@
+// Calculates max/min/sum of a range
 public class SegmentTreeRMQ {
   public int[] segmentTree;
   public int length;

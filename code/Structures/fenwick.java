@@ -1,6 +1,8 @@
-private static class BIT { 
+// Calculates sums for index 0-i, 
+// good if both calculated and updated often
+private static class BinaryIndexTree { 
   long[] tree;
-  public BIT(int size) {
+  public BinaryIndexTree(int size) {
     tree = new long[size+1];
   }
   long sum(int index) {

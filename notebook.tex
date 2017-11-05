@@ -16,6 +16,7 @@
 %\usepackage{datetime}
 %\usepackage{enumitem}
 %\usepackage{bm}
+\usepackage{fontspec}
 
 % Minted
 \usepackage{minted}
@@ -23,8 +24,12 @@
 
 \newcommand{\bigO}{\mathcal{O}}
 
+% Define flip table command, may only work on windows
+\newfontfamily{\fliptablefont}{Arial Unicode MS}
+\DeclareRobustCommand{\fliptable}{{\fliptablefont ┻━┻ ︵ ＼( °□° )／ ︵ ┻━┻ }}
+
 \pagestyle{fancy}
-\lhead{Flip the tables - Lund University}
+\lhead{\fliptable - Lund University}
 \rhead{\thepage}
 \cfoot{}
 \setlength{\headheight}{15.2pt}

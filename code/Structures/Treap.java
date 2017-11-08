@@ -1,12 +1,13 @@
+// A randomly balanced binary search tree
 public class Treap<T extends Comparable<T>> {
   Node root;
   
-  public void add(T v) {
-    Node n = new Node(v);
+  // Adds key to this treap
+  public void add(T key) {
+    Node n = new Node(key);
     root = add(root, n);
   }
-  
-  public Node add(Node curr, Node newNode) {
+  private Node add(Node curr, Node newNode) {
     if (curr == null)
       return newNode;
     if (curr.priority > newNode.priority) {
@@ -24,12 +25,12 @@ public class Treap<T extends Comparable<T>> {
     return curr;
   }
   
-  public boolean remove(T v) {
+  // Removes key from this treap, true on success
+  public boolean remove(T key) {
     int s = size();
-    root = remove(root, v);
+    root = remove(root, key);
     return size() < s;
   }
-  
   private Node remove(Node curr, T key) {
     if (curr == null)
       return null;
@@ -45,11 +46,10 @@ public class Treap<T extends Comparable<T>> {
     return curr;
   }
   
-  // this left, t right
-  public void merge(Treap<T> t) { 
-    root = merge(root, t.root);
+  // Merges this with a treap with larger elements
+  public void merge(Treap<T> larger) { 
+    root = merge(root, larger.root);
   }
-  
   private Node merge(Node l, Node r) {
     if (l == null || r == null)
       return l != null ? l : r;
@@ -65,7 +65,7 @@ public class Treap<T extends Comparable<T>> {
     }
   }
   
-  // return left, this right
+  // Returns values that <= SP, leaves > SP behind
   public Treap<T> split(T splitPoint) { 
     Treap<T> left = new Treap<>();
     List<Node> result = split(root, splitPoint);
@@ -73,7 +73,6 @@ public class Treap<T extends Comparable<T>> {
     root = result.get(1);
     return left;
   }
-  
   private List<Node> split(Node tree, T key) {
       Node l = null;
       Node r = null;
@@ -98,45 +97,42 @@ public class Treap<T extends Comparable<T>> {
       return landr;
   }
   
+  // Returns the size of this treap
+  public int size() {
+    return size(root);
+  }
+  private int size(Node n) {
+    return n != null ? n.size : 0;
+  }
   private void updateSize(Node node) {
     if (node != null)
       node.size = size(node.left) + size(node.right)+1;
   }
   
-  public int size() {
-    return size(root);
+  // Returns whether or not this treap contains key
+  public boolean contains(T key) {
+    return contains(root, key);
   }
-  
-  private int size(Node n) {
-    return n != null ? n.size : 0;
-  }
-  
-  public boolean contains(T value) {
-    return contains(root, value);
-  }
-  
-  private boolean contains(Node curr, T value) {
+  private boolean contains(Node curr, T key) {
     if (curr == null)
       return false;
-    int comp = curr.value.compareTo(value);
+    int comp = curr.value.compareTo(key);
     if (comp < 0)
-      return contains(curr.right, value);
+      return contains(curr.right, key);
     if (comp > 0)
-      return contains(curr.left, value);
+      return contains(curr.left, key);
     return true;
   }
   
   class Node {
     T value;
     double priority;
-    
     int size = 1;
-    
     Node left, right;
     
     public Node(T value) {
       this.value = value;
-      priority = Math.random(); //p++;
+      priority = Math.random();
     }
   }
 }

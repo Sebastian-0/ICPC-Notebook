@@ -22,6 +22,7 @@
 % Minted
 \usepackage{minted}
 \newcommand{\code}[1]{\inputminted[fontsize=\normalsize,baselinestretch=1]{java}{code/#1}}
+\newcommand{\codePy}[1]{\inputminted[fontsize=\normalsize,baselinestretch=1]{python}{code/#1}}
 
 \newcommand{\bigO}{\mathcal{O}}
 
@@ -93,7 +94,7 @@
   $u' = \frac{u \cdot v}{|v^2|}v$
   \newline
 
-  \textbf{Angle between vectors [-pi, pi]:} 
+  \textbf{Angle between vectors [$-\pi$, $\pi$]:} 
 
   $\mathrm{atan2} (u \times v, u \cdot v) = $
 
@@ -130,6 +131,70 @@
   (where $p$ is a point)
 
   A faster way to calculate would be using raycasting and counting intersecting edges.
+  \newline
+  
+  \textbf{Formulate plane given normal:}
+  
+  Given a normal $n=(a,b,c)$ and a point on the plane $P=(x_0,y_0,z_0)$ we can formulate the plane as $ax +by +cz + d = 0$ where $d = -(ax_0 + by_0 + cz_0)$.
+  \newline
+  
+  \textbf{Line equation}
+
+  $ax + by + c = 0 \Leftrightarrow y = -\frac{a}{b}x -\frac{c}{b}$
+  \newline
+
+  \textbf{2D Line intersection:} 
+
+  \textit{Given two line equations: $y = a_1x + b_1$, $y = a_2x + b_2$}
+
+  $x = \frac{b_2 - b_1}{a_1 - a_2}$ // if $a_1 = a_2$, the lines are parallel
+
+  $y = a_1x + b_1 = a_2x + b_2$
+  \newline
+
+  \textbf{Point-Line distance (in plane):} 
+
+  \textit{Given a line and a point: $ax+by+c=0, (x_0, y_0)$}
+
+  $dist = \frac{|ax_0+by_0+c|}{\sqrt{a^2+b^2}}$
+
+  $x_{closest}=\frac{b(bx_0-ay_0)-ac}{a^2+b^2}$ and $y_{closest}={\frac{a(-bx_0+ay_0)-bc}{a^2+b^2}}$
+  \newline
+
+  \textbf{Point-Plane distance (in 3D space):} 
+
+  \textit{Given a plane and a point: $ax+by+cz+d=0, (x_0, y_0, z_0)$}
+
+  $dist = \frac{|ax_0+by_0+cz_0+d|}{\sqrt{a^2+b^2+c^2}}$
+\newline
+
+  \textbf{Point-Line distance (in 3D space):} 
+
+  \textit{Given a line and a point: $l = \mathbf{u} + \mathbf{v}t, P$}
+
+  > Find $P_0$, any point on the line.
+
+  > $\mathbf{u_0} = \overrightarrow{P_0P}$
+
+  > $\mathbf{u_1} = \mathbf{\frac{u_0 \cdot v}{|v|^2} v}$ \textit{// Projection of $\mathbf{u_0}$ onto $\mathbf{v}$}
+
+  > $\mathbf{u_2} = \mathbf{u_0 - u_1}$ \textit{// Orthogonal vector}
+
+  $dist = |\mathbf{u_2}|$
+  \newline
+
+  \textbf{Line-Line distance:} 
+
+  \textit{if the lines are parallel in 2D:}
+
+  $d = \frac{|c_2 - c_1|}{\sqrt[]{a^2 + b^2}}$ \textit{(ax + by + c = 0)} or $d = \frac{|b_2 - b_1|}{\sqrt[]{a^2 + 1}}$ \textit{(y = ax + b)}
+  \newline
+
+  \textit{in 3D, given $l_1 = \mathbf{u_1} + \mathbf{v_1}t$ and $l_2 = \mathbf{u_2} + \mathbf{v_2}t$:}
+
+  > $\mathbf{n} = \mathbf{v_1} \times \mathbf{v_2}$
+
+  $dist = \frac{\mathbf{n\cdot (u_1 - u_2)}}{||\mathbf{n}||}$
   
   \subsection{Combinatorics}
   Various useful combinatoric formulas.
@@ -151,6 +216,9 @@
   Sum & $S_n = \frac{n(a_1+a_n)}{2}$ & $S_n = \frac{a(r^n-1)}{r-1}$ \\ \hline
   \end{tabular}
   \end{center}
+  
+  The calculation of combinations and permutations can be implemented efficiently in $\bigO(n/2)$ and $\bigO(n)$ respectively. The following code has a high risk of overflow, consider using \texttt{BigInteger} for large numbers:
+  \code{Math/Combinatorics.java}
   
   \subsection{Number Theory}
   Various useful number theory formulas.
@@ -196,6 +264,7 @@
   \subsection{Binary Search}
   Time complexity is $\bigO(n \log n)$ and space complexity is $\bigO(1)$.
   \code{Structures/BinarySearch.java}
+  
   \subsection{Sorting}
   Time complexity is $\bigO(n \log n)$ for both algorithms and space complexity is $\bigO(\log n)$.
   \begin{itemize}
@@ -444,7 +513,14 @@ $\bigO(n!)$          & 10
 \end{tabular}
 \end{center}
 
-
-
 \end{multicols*}
+
+\pagebreak
+
+\begin{figure}[h]
+\centering
+ \includegraphics[scale=1]{ascii_table.png}
+ \caption{The ASCII table.}
+\end{figure}
+
 \end{document}

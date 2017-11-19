@@ -1,5 +1,5 @@
+// Finds the convex hull of an array of points
 public class GrahamScan {
-  // Finds the convex hull of an array of points
   public Point[] solve(Point[] points) {
     int N = points.length;
     Point minY = points[0];

@@ -1,3 +1,5 @@
+// Returns an adjacency matrix containing the costs
+// between each pair of nodes
 public class FloydWarshall {
   // Adjacency matrix; Long.MAX_VALUE means no edge 
   public long[][] solve(long[][] adjacency) {

@@ -1,5 +1,5 @@
+// Returns the cost from node s to t
 public class Dijkstra {
-  // Returns the cost from node s to t
   public long solve(Node s, Node t) {
     TreeSet<Node> queue = new TreeSet<>();
     s.cost = 0;

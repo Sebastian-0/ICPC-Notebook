@@ -1,5 +1,5 @@
+// Returns the edges of the MST
 public class MinimumSpanningTree {
-  // Returns the edges of the MST
   public List<Edge> solve(Node[] nodes, Node start) {
     Edge[] source = new Edge[nodes.length];
     TreeSet<Node> queue = new TreeSet<>();
@@ -24,6 +24,5 @@ public class MinimumSpanningTree {
       if (e != null)
         mst.add(e);
     }
-
     return mst;
   }

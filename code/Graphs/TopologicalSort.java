@@ -1,21 +1,24 @@
+// Returns topologically sorted nodes with the root
+// as the first element
 public class TopologicalSort {
-  // The root node is at the top of the stack
-  public Stack<Node> solve(Node[] nodes) {
-    Stack<Node> result = new Stack<>();
+  public List<Node> solve(Node[] nodes) {
+    Stack<Node> stack = new Stack<>();
     for (Node u : nodes) {
       if (!u.taken)
-        doSolve(result, u);
+        doSolve(stack, u);
     }
+    List<Node> result = new ArrayList<>(stack);
+    Collections.reverse(result);
     return result;
   }
   
-  private void doSolve(Stack<Node> result, Node u) {
+  private void doSolve(Stack<Node> stack, Node u) {
     u.taken = true;
     for (Edge e : u.edges) {
       Node v = e.end;
       if (!v.taken)
-        doSolve(result, v);
+        doSolve(stack, v);
     }
-    result.push(u);
+    stack.push(u);
   }
 }

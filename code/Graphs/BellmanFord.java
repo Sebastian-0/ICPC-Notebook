@@ -1,5 +1,5 @@
+// Returns the cost from node s to all nodes (by index)
 public class BellmanFord {
-  // Returns the cost from node s to all nodes (by index)
   public long[] solve(Node[] nodes, Edge[] edges, int s) {
     int V = nodes.length;
     long[] dist = new long[V];

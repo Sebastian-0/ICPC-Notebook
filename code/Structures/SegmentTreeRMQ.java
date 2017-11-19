@@ -1,8 +1,9 @@
-// Calculates max/min/sum of a range
+// Calculates max/min/sum of a range of values
 public class SegmentTreeRMQ {
   public int[] segmentTree;
   public int length;
   
+  // Constructs a segment tree
   public SegmentTreeRMQ(int[] input) {
     length = input.length;
     int x = (int) Math.ceil(
@@ -11,7 +12,6 @@ public class SegmentTreeRMQ {
     segmentTree = new int[size];
     construct(input, 0, length-1, 0);
   }
-  
   private int construct(int[] input, int low, 
       int hi, int i) {
     if (low >= input.length)
@@ -28,10 +28,10 @@ public class SegmentTreeRMQ {
     return segmentTree[i];
   }
 
+  // Returns the minimum in the given range of indices
   public int rmq(int low, int hi) {
     return find(0, length-1, low, hi, 0);
   }
-  
   private int find(int segLow, int segHi, 
       int queryLow, int queryHi, int i) {
     if (queryLow <= segLow && queryHi >= segHi)
@@ -44,6 +44,7 @@ public class SegmentTreeRMQ {
       find(mid+1, segHi, queryLow, queryHi, 2*i + 2));
   }
   
+  // Replaces the value at the given index
   public void update(int index, int value) {
     index = segmentTree.length/2 + index;
     segmentTree[index] = value;

@@ -75,6 +75,23 @@
   $2 \cdot \sin x \cdot \cos y$ & = & $\sin(x-y) + \sin(x+y)$ \\ \hline
   \end{tabular}
   \end{center}
+  
+  \textbf{Law of Cosines:}
+  
+  $c^2 = a^2 + b^2 - 2ab\cos\gamma$
+  \newline
+  
+  \textbf{Law of Sines:}
+  
+  $\frac{a}{\sin \alpha} = \frac{b}{\sin \beta} = \frac{c}{\sin \gamma}$ 
+  \newline
+  
+  \begin{figure}[H]
+  \centering
+   \includegraphics[scale=0.5]{triangle_cosines.png}
+   \caption{A triangle with three corners, used in the Laws of Cosines/Sines.}
+   \label{triangle-cosines}
+  \end{figure}
 
   \subsection{Geometry}
   \textit{Given a triangle $\mathit{abc, u = a \rightarrow b, v = a \rightarrow c}$}
@@ -321,33 +338,39 @@
   \code{Graphs/Dijkstras.java}
   
   \subsection{Bellman-Ford Algorithm}
-  Time complexity is $\bigO(|E||V|)$ and space complexity is $\bigO(|V|)$.
+  Time complexity is $\bigO(|E||V|)$ and space complexity is $\bigO(|V|)$. Handles negative weights and finds negative cycles.
   \code{Graphs/BellmanFord.java}
   
-  \subsection{Floyd-Warshall Algorithm}
-  Time complexity is $\bigO(|V|^3)$ and space complexity is $\bigO(|V|^2)$.
+  \subsection{All Pairs Shortest Paths}
+  Time complexity is $\bigO(|V|^3)$ and space complexity is $\bigO(|V|^2)$. Implemented using the Floyd-Warshall algorithm. Handles negative weights and finds negative cycles.
   \code{Graphs/FloydWarshall.java}
   
-  \subsection{Prim's Algorithm}
-  Time complexity is $\bigO(|E| \log{|V|})$ and space complexity is $\bigO(|V|)$.
+  \subsection{Minimum Spanning Tree}
+  Time complexity is $\bigO(|E| \log{|V|})$ and space complexity is $\bigO(|V|)$. Implemented using Prim's algorithm.
   \code{Graphs/MST.java}
   
   \subsection{Topological Sort}
   Time complexity is $\bigO(|E| + |V|)$ and space complexity is $\bigO(|V|)$. You need to pop the resulting stack to get the nodes in the correct order, \textit{do not} loop over it/convert to list since that results in the reverse order. Running this on a graph with cycles yields an incorrect result.
   \code{Graphs/TopologicalSort.java}
   
+  \subsection{Strongly Connected Components}
+  Time complexity is $\bigO(|E| + |V|)$ and space complexity is $\bigO(|V|)$. Implemented using Tarjan's algorithm.
+  \code{Graphs/StronglyConnectedComponents.java}
+  
   \subsection{Network Flow/Min Cut}
-  Time complexity is $\bigO(|V||E|^2)$ and space complexity is $\bigO(|V|+|E|)$. Solves both max flow and min cut. If the graph is very large this can be improved to $\bigO(|E|^2 \log{C})$ (where C is the maximum flow). Find $\Delta$, the largest POT that is smaller than the largest flow out of $s$. Run the algorithm but only allow edges with a capacity of at least $\Delta$. When there are no more paths between $s$ and $t$ let $\Delta = \Delta / 2$ and repeat until $\Delta < 0$.
+  Time complexity is $\bigO(|V||E|^2)$ and space complexity is $\bigO(|V|+|E|)$. Implemented using the Edmond-Karp algorithm. Solves both max flow and min cut.
+  
+  If the graph is very large the running time can be improved to $\bigO(|E|^2 \log{C})$ (where C is the maximum flow). Find $\Delta$, the largest POT that is smaller than the largest flow out of $s$. Run the algorithm but only allow edges with a capacity of at least $\Delta$. When there are no more paths between $s$ and $t$ let $\Delta = \Delta / 2$ and repeat until $\Delta < 0$.
   \code{Graphs/NetworkFlow.java}
   
-  \subsection{Hopcroft-Carp Algorithm}
-  Time complexity is $\bigO(|E|\sqrt{|V|})$ and space complexity is $\bigO(|V|)$. Gives both a maximum bipartite matching and a minimum vertex cover. Can be converted to Maximum Independent Set by selecting all vertices not in the vertex cover.
+  \subsection{Bipartite Matching/Minimum Vertex Cover}
+  Time complexity is $\bigO(|E|\sqrt{|V|})$ and space complexity is $\bigO(|V|)$. Implemented using the Hopcroft-Carp algorithm. Gives both a maximum bipartite matching and a minimum vertex cover. Can be converted to a maximum independent set by selecting all vertices not in the vertex cover.
   \code{Graphs/HopcroftCarp.java}
   
   
 \section{Geometry}
-  \subsection{Graham Scan}
-  Time complexity is $\bigO(n\log{n})$ and space complexity is $\bigO(n)$.
+  \subsection{Convex Hull}
+  Time complexity is $\bigO(n\log{n})$ and space complexity is $\bigO(n)$. Implemented using Graham scan.
   \code{Geometry/GrahamScan.java}
   
 \section{Dynamic Programing}

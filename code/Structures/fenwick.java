@@ -1,5 +1,5 @@
-// Calculates sums for index 0-i, 
-// good if both calculated and updated often
+// Calculates sums for index 0 - i, good if both
+// queried and updated often
 private static class BinaryIndexTree { 
   long[] tree;
   public BinaryIndexTree(int size) {

@@ -1,4 +1,4 @@
-// Finds patterns in a text
+// Finds patterns in text, also constructs a z-array
 private static class ZArray {
   static int search(String text, String pat) {
     // Note: replace $ if found in text or pat!

@@ -240,6 +240,13 @@
   \subsection{Number Theory}
   Various useful number theory formulas.
   \code{Math/Gcd.java}
+  
+  \subsection{Systems of Equations}
+  Time complexity is $\bigO(n^3)$ and space complexity is $\bigO(n)$. Uses Gaussian elimination with scaled partial pivoting for numerical stability. The for-loop with the scaling may be removed if precision is not a problem.
+  
+  This only works for $N \times N$ matrices; if you have an $N \times M$ matrix (with N > M) you can solve it by first computing $A' = A^\top A$ and $b' = A^\top b$ and then running the algorithm. That would result in a least squares solution.
+  \code{Math/Gauss.java}
+  
 
 
 \section{Algorithmic concepts}
@@ -525,10 +532,10 @@ Alg. Complexity & Input size/s \\ \hline
 $\bigO(\log^*{n})$   & $\rightarrow \infty$ \\
 $\bigO(\log{n})$     & 2 \textasciicircum 100 000 000 \\
 $\bigO(n)$           & 100 000 000 \\
-$\bigO(n*\log{n})$   & 4 500 000 \\
-$\bigO(n*\log{n}*\log{n})$ & 300 000 \\
+$\bigO(n\log{n})$   & 4 500 000 \\
+$\bigO(n\log{n}\log{n})$ & 300 000 \\
 $\bigO(n^2)$         & 10 000 \\
-$\bigO(n^2*\log{n})$ & 3 000 \\
+$\bigO(n^2\log{n})$ & 3 000 \\
 $\bigO(n^3)$         & 450 \\
 $\bigO(2^n)$         & 26.5 \\
 $\bigO(3^n)$         & 16.5 \\

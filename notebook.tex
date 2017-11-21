@@ -49,6 +49,11 @@
 
 \tableofcontents
 
+
+\section{Code Templates}
+  \subsection{KattIO}
+  \code{Kattio.java}
+
 \section{Math}
   \subsection{Trigonometry}
   Common formulas for sin and cos.
@@ -277,11 +282,6 @@
   An example of this may be "Given an array of $n \in [1, 2^{36}]$ numbers find the maximum subset sum modulo $m$". Naively testing the sum of all subsets will not work ($2^{36}$ is too large), instead split the array in two and find all possible sums in each half (only $2^{18}$ in each). When this is done we merge them in a smart way that is faster than $\bigO(n^2)$.
   
   These types of problems are characterized by an \emph{input size} just beyond the range of brute force and \emph{easily partitioned} data.
-
-
-\section{Code Templates}
-  \subsection{KattIO}
-  \code{Kattio.java}
   
   
 \section{Search \& Sort}
@@ -489,7 +489,7 @@ All the following problems consider the case where you get a list of $n$ tasks $
   When this is done you have a timeline of multiple layers each with an amount of tasks. To get the solution sort the layers in the timeline by decreasing amount of tasks and assign the $k$ first layers to your machines. Time complexity is $\bigO(n\log n)$.
   
   \subsection{Minimize machines, all tasks}
-  The goal is to minimize the amount of machines $k$ needed to service \emph{all} of the tasks. This can be solved by sorting the tasks by $s_i$ and finding the maximum depth $d$ (the maximum amount of simultaneous tasks). To solve it we need $k=d$ machines. To assign work go through the list and give each task to and idle machine.  Time complexity is $\bigO(n\log n)$.
+  The goal is to minimize the amount of machines $k$ needed to service \emph{all} of the tasks. This can be solved by sorting the tasks by $s_i$ and finding the maximum depth $d$ (the maximum amount of simultaneous tasks). To solve it we need $k=d$ machines. To assign work go through the list and give each task to an idle machine. Time complexity is $\bigO(n\log n)$.
         
         
 \section{Checking for errors}

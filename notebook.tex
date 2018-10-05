@@ -10,6 +10,7 @@
 %\usepackage{color}
 %\usepackage{float}
 \usepackage{fullpage}
+\usepackage{ifplatform}
 %\usepackage{subcaption}
 %\usepackage[scaled]{beramono}
 \usepackage{titling}
@@ -20,15 +21,22 @@
 \usepackage{graphicx}
 
 % Minted
-\usepackage{minted}
+\usepackage[cache=false]{minted}
 \newcommand{\code}[1]{\inputminted[fontsize=\normalsize,baselinestretch=1]{java}{code/#1}}
 \newcommand{\codePy}[1]{\inputminted[fontsize=\normalsize,baselinestretch=1]{python}{code/#1}}
 
 \newcommand{\bigO}{\mathcal{O}}
 
 % Define flip table command, may only work on windows
+\ifwindows
 \newfontfamily{\fliptablefont}{Arial Unicode MS}
-\DeclareRobustCommand{\fliptable}{{\fliptablefont ┻━┻ ︵ ＼( °□° )／ ︵ ┻━┻ }}
+\fi
+
+\iflinux
+\newfontfamily{\fliptablefont}{DejaVu Sans Mono}
+\fi
+
+\DeclareRobustCommand{\fliptable}{{\fliptablefont /┬─┬/ $\frown$ (\textbackslash o°o)\textbackslash }}
 
 \pagestyle{fancy}
 \lhead{\fliptable - Lund University}
@@ -245,6 +253,10 @@
   \subsection{Number Theory}
   Various useful number theory formulas.
   \code{Math/Gcd.java}
+  
+  \subsection{Prime factorization}
+  Time complexity is $\bigO(\sqrt{n})$ and space complexity is $\bigO(n)$.
+  \codePy{Math/Primes.py}
   
   \subsection{Systems of Equations}
   Time complexity is $\bigO(n^3)$ and space complexity is $\bigO(n)$. Uses Gaussian elimination with scaled partial pivoting for numerical stability. The for-loop with the scaling may be removed if precision is not a problem.

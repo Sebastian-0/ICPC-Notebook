@@ -12,7 +12,7 @@ public class UnionFind {
     Node rb = find(b);
     if (ra.rank > rb.rank) {
       rb.parent = ra;
-    } else if (ra.rank > rb.rank) {
+    } else if (rb.rank > ra.rank) {
       ra.parent = rb;
     } else {
       ra.parent = rb;
